@@ -6,7 +6,15 @@ class Question(models.Model):
     date = models.DateField()
 
 
+    def __str__(self):
+        return self.text
+
+
 class Choice(models.Model):
     question = models.ForeignKey(Question , on_delete=models.CASCADE )
     Choice = models.CharField(max_length = 300)
     votes = models.IntegerField(default = 0)
+
+
+    def __str__(self):
+        return self.Choice
