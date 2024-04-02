@@ -11,6 +11,7 @@ class Author(models.Model):
     def get_absolute_url(self):
         return reverse("model_detail", kwargs={"pk": self.pk})
     
+
     def __str__(self):
         return '%s , %s' % (self.name , self.lastName)
 
@@ -32,11 +33,18 @@ class Book(models.Model):
     summary = models.TextField(max_length = 1000 ,help_text = "What the hell is this ??",blank=True,null=True)
     genere = models.ManyToManyField(Genere,help_text = "Select a genre for this book",blank=True,null=True)
 
+        
+    def diplay_genere(self):
+        return ' & '.join([ genere.name for genere in self.genere.all()[:3]])
+
     def get_absolute_url(self):
         return reverse("model_detail", kwargs={"pk": self.pk})
     
     def __str__(self):
         return self.title
+    
+    
+    diplay_genere.short_description = 'Genere'
 
 class BookInstance(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular book across whole library")
