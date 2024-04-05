@@ -48,7 +48,7 @@ class Car(models.Model):
     carName      = models.CharField(max_length = 100)
     manufacture  = models.ForeignKey(Manufacture,null=True,on_delete=models.SET_NULL)
     carType      = models.ForeignKey(Type,null=True,blank=True,on_delete=models.SET_NULL)
-    fuel         = models.ForeignKey(Fuel,null=True,on_delete=models.SET_NULL)
+    fuel         = models.ForeignKey(Fuel,null=True,blank=True,on_delete=models.SET_NULL)
     date         = models.DateField(help_text="The date of manufacture of this car")
     capacity     = models.IntegerField(help_text="The number of this car's capacity")
     distance     = models.IntegerField(help_text="Distance that this car travled")
