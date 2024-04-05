@@ -12,10 +12,10 @@ class Author(models.Model):
         return reverse("model_detail", kwargs={"pk": self.pk})
     
 
-    def __str__(self):
-        return '%s , %s' % (self.name , self.lastName)
+    # def __str__(self):
+    #     return '%s , %s' % (self.name , self.lastName)
 
-
+    
 class Genere(models.Model):
     name = models.CharField(max_length = 100, help_text = "The Genere (e.g. Science Fiction, French Poetry etc.)")
 
